@@ -1,0 +1,47 @@
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+html {
+  background: #ef32d9;
+  background: -webkit-linear-gradient(to right, #89fffd, #ef32d9);
+  background: linear-gradient(to right, #89fffd, #ef32d9);
+
+}
+
+button {
+  width: 100%;
+  background: yellow;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border-color: green;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: green;
+  color: white;
+}
+
+h3 {
+  font-family: "Comic sans MS";
+}
+
+h1 {
+  color: white;
+}
+
+p {
+  color: blue;
+}
