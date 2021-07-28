@@ -14,9 +14,7 @@ Xkcd.php: is used to send the random emails from the  https://c.xkcd.com/random/
 
 Unsubscribe.php: is used to unsubscribe the facility of getting XKCD comics.
 
-xkcd images: In this folder already one xkcd image will be present. whenever we are subscribing to xkcd comics we will get random comics and 
-
-the newly comic image is replaced with the older image and for downloading the image there will be no problem for it.
+xkcd images: In this folder already one xkcd image will be present. whenever we are subscribing to xkcd comics we will get random comics and the newly comic image is replaced with the older image and for downloading the image there will be no problem for it.
 
 xkcdstyles.css: is used for giving the styles to the index.php.
 
