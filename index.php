@@ -30,7 +30,7 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['sname']) 
         if ($Var->affected_rows > 0) {
             $to = $email;
             $subject = "Xkcd Comics Subscription ";
-            $url = "http://" . $_SERVER['HTTP_HOST'] . "/assignment/verification.php?email=$email&hash=$hash";
+            $url = "http://" .$servername. "/assignment/verification.php?email=$email&hash=$hash";
             $msg ="
                         <html>
                         <head>
