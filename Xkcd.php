@@ -47,7 +47,7 @@ foreach ($results as $row) {
                         <center>
                             <h1 style='color:#7cfc00;'>" . $json_data['title'] . "</h1>
                             <img src='" . $img_url . "' alt='" . $json_data['alt'] . "'>
-                            <a href='http://" . $_SERVER['HTTP_HOST'] . "/assignment/unsubscription.php?email=$to&hash=$hash'><h3>Unsubscribe XKCD</h3></a>
+                            <a href='http://" .$servername. "/assignment/unsubscription.php?email=$to&hash=$hash'><h3>Unsubscribe XKCD</h3></a>
                         </center><br/>
                         <p>With regards </p>
                         <p>Xkcd Team</p>
