@@ -17,7 +17,7 @@ $url_random_xkcd = "https://xkcd.com/" . $rand . "/info.0.json";
 $data = file_get_contents($url_random_xkcd);
 $json_data = json_decode($data, true);
 $img_url = $json_data['img'];
-$img_path = 'C:\xampp\htdocs\assignment\xkcd images\comic image.png';
+$img_path = "xkcd images/image.png";
 file_put_contents($img_path, file_get_contents($img_url));
 
 
