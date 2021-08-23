@@ -4,8 +4,8 @@ require_once dirname(__FILE__) . "/db.php";
 
 if (isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !empty($_GET['hash'])) {
     $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
-    $email = htmlspecialchars($_GET['email']);
-    $hash = htmlspecialchars($_GET['hash']);
+    $email =($_GET['email']);
+    $hash  =($_GET['hash']);
     if (!$conn) {
         die('Connection not Established');
     }
