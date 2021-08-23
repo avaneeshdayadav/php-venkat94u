@@ -18,5 +18,10 @@ xkcd images: In this folder already one xkcd image will be present. whenever we 
 
 xkcdstyles.css: is used for giving the styles to the index.php.
 
+
+LIVE DEMO  :  https://venkatxkcd.azurewebsites.net/ 
+
+
+
  
 
