@@ -4,18 +4,13 @@ require_once dirname(__FILE__) . "/db.php";
 $alert = '';
 
 if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['sname']) && !empty($_POST['sname'])) {
-    $email = htmlspecialchars($_POST['email']);
-    $username = htmlspecialchars($_POST['sname']);
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < 10; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    $hash = md5($randomString); //random strings for hash
+    $email =   ($_POST['email']);
+    $username =($_POST['sname']);
+    $characters ="[A-Za-z0-9]+";
+    $hash = md5($email); //random strings for hash
     $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);//connecting to Data Base
     if (!$conn) {
-        die('Connection not Established');
+        die('Connection Failed');
     }
 
     $Var = $conn->prepare("SELECT * FROM subimages WHERE email = ?");
