@@ -16,9 +16,9 @@ $rand = rand(1, $curr_num);
 $url_random_xkcd = "https://xkcd.com/" . $rand . "/info.0.json";
 $data = file_get_contents($url_random_xkcd);
 $json_data = json_decode($data, true);
-$img_url = $json_data['img'];
-$img_path = "xkcd images/image.png";
-file_put_contents($img_path, file_get_contents($img_url));
+$image = $json_data['img'];
+$Comic_image_path = "xkcd images/image.png";
+file_put_contents($Comic_image_path, file_get_contents($image));
 
 
 $subject = $json_data['safe_title'];
@@ -46,7 +46,7 @@ foreach ($results as $row) {
                         <h3>Enjoy your Comic </h1>
                         <center>
                             <h1 style='color:#7cfc00;'>" . $json_data['title'] . "</h1>
-                            <img src='" . $img_url . "' alt='" . $json_data['alt'] . "'>
+                            <img src='" . $image . "' alt='" . $json_data['alt'] . "'>
                             <a href='http://" .$servername. "/assignment/unsubscription.php?email=$to&hash=$hash'><h3>Unsubscribe XKCD</h3></a>
                         </center><br/>
                         <p>With regards </p>
@@ -64,17 +64,17 @@ foreach ($results as $row) {
 
     $message = "--{$mime_boundary}\n" . "Content-Type: text/html; charset=\"UTF-8\"\n" .
         "Content-Transfer-Encoding: 7bit\n\n" . $htmlContent . "\n\n";
-    if (!empty($img_path)) {
-        if (file_exists($img_path)) {
+    if (!empty($Comic_image_path)) {
+        if (file_exists($Comic_image_path)) {
             $message .= "--{$mime_boundary}\n";
-            $fp = @fopen($img_path, "rb");
-            $data = @fread($fp, filesize($img_path));
+            $fp = @fopen($Comic_image_path, "rb");
+            $data = @fread($fp, filesize($Comic_image_path));
 
             @fclose($fp);
             $data = chunk_split(base64_encode($data));
-            $message .= "Content-Type: application/octet-stream; name=\"" . basename($img_path) . "\"\n" .
-                "Content-Description: " . basename($img_path) . "\n" .
-                "Content-Disposition: attachment;\n" . " filename=\"" . basename($img_path) . "\"; size=" . filesize($img_path) . ";\n" .
+            $message .= "Content-Type: application/octet-stream; name=\"" . basename($Comic_image_path) . "\"\n" .
+                "Content-Description: " . basename($Comic_image_path) . "\n" .
+                "Content-Disposition: attachment;\n" . " filename=\"" . basename($Comic_image_path) . "\"; size=" . filesize($Comic_image_path) . ";\n" .
                 "Content-Transfer-Encoding: base64\n\n" . $data . "\n\n";
         } else {
             echo "File Not Found";
