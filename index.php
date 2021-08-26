@@ -25,7 +25,7 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['sname']) 
         if ($Var->affected_rows > 0) {
             $to = $email;
             $subject = 'Xkcd Comics Subscription';
-            $url = "http://" .$servername. "/assignment/verification.php?email=$email&hash=$hash";
+            $url = $servername. "/finalproject/verification.php?email=$email&hash=$hash";
             $msg ="
                         <html>
                         <head>
@@ -44,7 +44,7 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['sname']) 
                 ";
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers .= "From:venkatguptha8750@gmail.com" . "\r\n";
+            $headers .=  $email_address. "\r\n";
 
             mail($to, $subject, $msg, $headers);
 
