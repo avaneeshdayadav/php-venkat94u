@@ -4,6 +4,7 @@ $db_user = 'user';
 $db_password = 'password';
 $db_name = 'database_name';
 $servername = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ' ';
+$email_address='venkatguptha8750@gmail.com';
 //Create Connection
 
 $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
