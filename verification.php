@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . "/db.php";
+require_once dirname(__FILE__) . '/db.php';
 
 if (isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !empty($_GET['hash'])) {
     $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
@@ -9,13 +9,13 @@ if (isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !
     if (!$conn) {
         die('Connection not Established');
     }
-    $Var = $conn->prepare("SELECT * FROM subimages WHERE email =? AND hash = ?");
-    $Var->bind_param("ss", $email, $hash);
+    $Var = $conn->prepare('SELECT * FROM subimages WHERE email =? AND hash = ?');
+    $Var->bind_param('ss', $email, $hash);
     $Var->execute();
     $result = $Var->get_result();
     if ($result->num_rows > 0) {
-        $Var = $conn->prepare("UPDATE subimages SET verify = 1  WHERE email =? AND hash = ?");
-        $Var->bind_param("ss", $email, $hash);
+        $Var = $conn->prepare('UPDATE subimages SET verify = 1  WHERE email =? AND hash = ?');
+        $Var->bind_param('ss', $email, $hash);
         $Var->execute();
         if ($Var->affected_rows > 0) {
             echo "
@@ -25,12 +25,12 @@ if (isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !
                 ";
         } else {
             if ($Var->errno == 0) {
-                echo "Already Verified";
+                echo 'Already Verified';
             } else {
-                echo "Verificaiton Failed";
+                echo 'Verificaiton Failed';
             }
         }
     } else {
-        echo "Email Not Found.";
+        echo 'Email Not Found.';
     }
 }
