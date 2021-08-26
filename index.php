@@ -1,30 +1,30 @@
 <?php
-require_once dirname(__FILE__) . "/db.php";
+require_once dirname(__FILE__) . '/db.php';
 
 $alert = '';
 
 if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['sname']) && !empty($_POST['sname'])) {
     $email =   ($_POST['email']);
     $username =($_POST['sname']);
-    $characters ="[A-Za-z0-9]+";
+    $characters ='[A-Za-z0-9]+';
     $hash = md5($email); //random strings for hash
     $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);//connecting to Data Base
     if (!$conn) {
         die('Connection Failed');
     }
 
-    $Var = $conn->prepare("SELECT * FROM subimages WHERE email = ?");
-    $Var->bind_param("s", $email);
+    $Var = $conn->prepare('SELECT * FROM subimages WHERE email = ?');
+    $Var->bind_param('s', $email);
     $Var->execute();
     $result = $Var->get_result();
     if ($result->num_rows == 0) {
-        $Var = $conn->prepare("INSERT INTO subimages (email, hash,username) VALUES (?,?,?)");
-        $Var->bind_param("sss", $email, $hash, $username);
+        $Var = $conn->prepare('INSERT INTO subimages (email, hash,username) VALUES (?,?,?)');
+        $Var->bind_param('sss', $email, $hash, $username);
 
         $Var->execute();
         if ($Var->affected_rows > 0) {
             $to = $email;
-            $subject = "Xkcd Comics Subscription ";
+            $subject = 'Xkcd Comics Subscription';
             $url = "http://" .$servername. "/assignment/verification.php?email=$email&hash=$hash";
             $msg ="
                         <html>
@@ -50,10 +50,10 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['sname']) 
 
             $alert = 'Verification Mail sent to your email address.';
         } else {
-            echo "Error Occured";
+            echo 'Error Occured';
         }
     } else {
-        $alert = "Email already registered";
+        $alert = 'Email already registered';
     }
 }
 ?>
