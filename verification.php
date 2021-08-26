@@ -20,7 +20,7 @@ if (isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !
         if ($Var->affected_rows > 0) {
             echo "
                     <script>alert('Verification done successfully');
-                    window.location.href = 'http://" .$servername. "/assignment/index.php';
+                    window.location.href = 'index.php';
                     </script>
                 ";
         } else {
