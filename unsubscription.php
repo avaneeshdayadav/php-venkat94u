@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . "/db.php";
+require_once dirname(__FILE__) . '/db.php';
 
 if (isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !empty($_GET['hash'])) {
     $email = $_GET['email'];
@@ -10,13 +10,13 @@ if (isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !
         die('Connection not Established');
     }
     $verify = 1;
-    $Var = $conn->prepare("SELECT * FROM subimages WHERE email = ? AND hash = ? AND verify = ?");
-    $Var->bind_param("sss", $email, $hash, $verify);
+    $Var = $conn->prepare('SELECT * FROM subimages WHERE email = ? AND hash = ? AND verify = ?');
+    $Var->bind_param('sss', $email, $hash, $verify);
     $Var->execute();
     $result = $Var->get_result();
     if ($result->num_rows > 0) {
-        $Var = $conn->prepare("DELETE FROM subimages WHERE email =? AND hash =? ");
-        $Var->bind_param("ss", $email, $hash);
+        $Var = $conn->prepare('DELETE FROM subimages WHERE email =? AND hash =? ');
+        $Var->bind_param('ss', $email, $hash);
         $Var->execute();
         if ($Var->affected_rows > 0) {
             echo "
@@ -25,9 +25,9 @@ if (isset($_GET['email']) && !empty($_GET['email']) && isset($_GET['hash']) && !
                     </script>
                 ";
         } else {
-            echo "Unsubscribe Failed";
+            echo 'Unsubscribe Failed';
         }
     } else {
-        echo "User Not Found.";
+        echo 'User Not Found.';
     }
 }
