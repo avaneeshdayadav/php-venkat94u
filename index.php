@@ -44,7 +44,7 @@ if (isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['sname']) 
                 ";
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers .=  $email_address. "\r\n";
+            $headers .=  "From: $email_address". "\r\n";
 
             mail($to, $subject, $msg, $headers);
 
