@@ -55,7 +55,7 @@ foreach ($results as $row) {
                 </html>
             ";
 
-    $headers = $email_address;
+    $headers ="From: $email_address";
 
     $semi_rand = md5(time());
     $mime_boundary = "==Multipart_Boundary_x{$semi_rand}x";
