@@ -8,12 +8,12 @@ if (!$conn) {
     die('Connection not Established');
 }
 
-$url_curr_xkcd = "http://xkcd.com/info.0.json";
+$url_curr_xkcd = 'http://xkcd.com/info.0.json';
 $data = file_get_contents($url_curr_xkcd);
 $json_data = json_decode($data, true);
 $curr_num = $json_data['num'];
 $rand = rand(1, $curr_num);
-$url_random_xkcd = "https://xkcd.com/" . $rand . "/info.0.json";
+$url_random_xkcd = 'https://xkcd.com/' . $rand . '/info.0.json';
 $data = file_get_contents($url_random_xkcd);
 $json_data = json_decode($data, true);
 $image = $json_data['img'];
